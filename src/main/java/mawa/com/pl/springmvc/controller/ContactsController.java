@@ -1,5 +1,6 @@
 package mawa.com.pl.springmvc.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import mawa.com.pl.springmvc.bean.Contact;
@@ -20,19 +21,20 @@ public class ContactsController {
 
 	@RequestMapping("/uuid")
 	@ResponseBody
-	public String getUUID() {
+	public Contact getUUID() {
 		Contact cnt = new Contact();
 		cnt.setName(UUID.randomUUID().toString());
 		repository.save(cnt);
-		return Integer.toString(cnt.getId());
+		return cnt;
 		
 	}
 
 	@RequestMapping("/uuidname")
 	@ResponseBody
-	public String getUUIDWithName(
+	public Contact getUUIDWithName(
 			@RequestParam(name = "name", defaultValue = "") String name) {
-		return name + UUID.randomUUID().toString();
+		List<Contact> cts = repository.findByName(name);
+		return cts.isEmpty() ? null : cts.get(0);
 	}
 
 	@RequestMapping("/uuid/{id}")
