@@ -24,6 +24,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+<dependency>
+	<groupId>org.springframework.data</groupId>
+	<artifactId>spring-data-commons</artifactId>
+	<version>1.10.2.RELEASE</version>
+</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -36,6 +41,30 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-entitymanager</artifactId>
+	<version>5.0.0.Final</version>
+</dependency>
+<dependency>
+	<groupId>org.hibernate</groupId>
+	<artifactId>hibernate-core</artifactId>
+	<version>5.0.0.Final</version>
+</dependency>
+
+<dependency>
+	<groupId>org.springframework.data</groupId>
+	<artifactId>spring-data-jpa</artifactId>
+	<version>1.8.2.RELEASE</version>
+</dependency>
+
+<dependency>
+	<groupId>org.hsqldb</groupId>
+	<artifactId>hsqldb</artifactId>
+	<version>2.3.3</version>
+</dependency>
+
 	</dependencies>
 
 
@@ -50,6 +79,9 @@
 					<verbose>true</verbose>
 					<fork>true</fork>
 					<compilerVersion>${java.compiler}</compilerVersion>
+					<source>${java.compiler}</source>
+			<target>${java.compiler}</target>
+					
 				</configuration>
 			</plugin>
 			<plugin>
