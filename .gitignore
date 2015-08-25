@@ -2,3 +2,6 @@
 .project
 .settings/**
 target/**
+alsbdebug.xml
+configfwkdebug.xml
+security/SerializedSystemIni.dat

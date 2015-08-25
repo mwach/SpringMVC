@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+//@Import(RepositoryRestMvcConfiguration.class)
 @Configuration
 @ComponentScan({"mawa.com.pl.springmvc.controller", "mawa.com.pl.springmvc.dao"})
 @EnableWebMvc
