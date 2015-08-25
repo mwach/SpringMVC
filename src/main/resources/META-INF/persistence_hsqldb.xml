@@ -11,15 +11,15 @@
   <persistence:class>mawa.com.pl.springmvc.bean.Contact</persistence:class>
         <persistence:properties>
             <persistence:property name="hibernate.connection.driver_class"
-                value="com.mysql.jdbc.Driver" />
+                value="org.hsqldb.jdbc.JDBCDriver" />
             <persistence:property name="hibernate.connection.password"
-                value="spring" />
+                value="" />
             <persistence:property name="hibernate.connection.url"
-                value="jdbc:mysql://localhost/spring" />
+                value="jdbc:hsqldb:mem:testdb" />
             <persistence:property name="hibernate.connection.username"
-                value="spring" />
+                value="sa" />
             <persistence:property name="hibernate.dialect"
-                value="org.hibernate.dialect.MySQLDialect" />
+                value="org.hibernate.dialect.HSQLDialect" />
                 <persistence:property name="show_sql" value="true" />
                 
                 <persistence:property name="hibernate.hbm2ddl.auto" value="create-drop"/>

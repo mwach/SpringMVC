@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import mawa.com.pl.springmvc.bean.Contact;
+import mawa.com.pl.springmvc.bean.ExclusiveContact;
 import mawa.com.pl.springmvc.dao.ContactRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,16 @@ public class ContactsController {
 		cnt.setName(UUID.randomUUID().toString());
 		repository.save(cnt);
 		return cnt;
-		
+	}
+
+	@RequestMapping("/uuid2")
+	@ResponseBody
+	public ExclusiveContact getUUID2() {
+		ExclusiveContact cnt = new ExclusiveContact();
+		cnt.setName(UUID.randomUUID().toString());
+		cnt.setGoldenCardNo(UUID.randomUUID().toString());
+		repository.save(cnt);
+		return cnt;
 	}
 
 	@RequestMapping("/uuidname")
