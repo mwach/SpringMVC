@@ -8,7 +8,7 @@
 <!--         <persistence:mapping-file>orm.xml</persistence:mapping-file>
         <persistence:class>it.test.home.entity.User</persistence:class>
   -->
-  <persistence:class>mawa.com.pl.springmvc.bean.Contact</persistence:class>
+<!--   <persistence:class>mawa.com.pl.springmvc.bean.Contact</persistence:class> -->
         <persistence:properties>
             <persistence:property name="hibernate.connection.driver_class"
                 value="com.mysql.jdbc.Driver" />
@@ -21,6 +21,7 @@
             <persistence:property name="hibernate.dialect"
                 value="org.hibernate.dialect.MySQLDialect" />
                 <persistence:property name="show_sql" value="true" />
+        <persistence:property name="format_sql" value="true" />
                 
                 <persistence:property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 

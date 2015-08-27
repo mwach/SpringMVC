@@ -5,6 +5,7 @@ import java.util.UUID;
 
 import mawa.com.pl.springmvc.bean.Contact;
 import mawa.com.pl.springmvc.bean.ExclusiveContact;
+import mawa.com.pl.springmvc.bean.Order;
 import mawa.com.pl.springmvc.dao.ContactRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class ContactsController {
 		ExclusiveContact cnt = new ExclusiveContact();
 		cnt.setName(UUID.randomUUID().toString());
 		cnt.setGoldenCardNo(UUID.randomUUID().toString());
+		Order order = new Order();
+		order.setOrderUUID(UUID.randomUUID().toString());
+		cnt.addOrder(order);
 		repository.save(cnt);
 		return cnt;
 	}

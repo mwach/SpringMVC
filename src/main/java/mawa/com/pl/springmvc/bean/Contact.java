@@ -13,9 +13,10 @@ import javax.persistence.Table;
 
 
 // TABLE per class hierarchy
-//@Entity(name="contact")
-//@DiscriminatorColumn(name="disc")
-//@DiscriminatorValue("C")
+@Entity(name="contact")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="disc")
+@DiscriminatorValue("C")
 
 //TABLE per subclass
 //@Entity
@@ -23,9 +24,9 @@ import javax.persistence.Table;
 //@Inheritance(strategy=InheritanceType.JOINED)
 
 //TABLE per concrete class
-@Entity
-@Table(name="contact")
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+//@Entity
+//@Table(name="contact")
+//@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 
 public class Contact {
 
