@@ -9,6 +9,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
@@ -35,8 +36,11 @@ public class ExclusiveContact extends Contact{
 
 	String goldenCardNo;
 
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinTable(name="contact_order", joinColumns = {@JoinColumn(name="C_ID")}, inverseJoinColumns = {@JoinColumn( name="O_ID")})
+	//SEPARATE TABLE JOIN
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinTable(name="contact_order", joinColumns = {@JoinColumn(name="C_ID")}, inverseJoinColumns = {@JoinColumn( name="O_ID")})
+
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="contractId")
 	Set<Order> orders = new HashSet<>();
 
 	public String getGoldenCardNo() {

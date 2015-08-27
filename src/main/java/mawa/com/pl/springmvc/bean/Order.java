@@ -16,6 +16,9 @@ public class Order {
 	@Column(name="O_ID")
 	private int id;
 
+	@Column(name="contract_id")
+	private int contractId;
+	
 	@Column(name="order_uuid", length=50)
 	private String orderUUID;
 
@@ -25,6 +28,16 @@ public class Order {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	
+
+	public int getContractId() {
+		return contractId;
+	}
+
+	public void setContractId(int contractId) {
+		this.contractId = contractId;
 	}
 
 	public String getOrderUUID() {

@@ -20,8 +20,8 @@
                 value="spring" />
             <persistence:property name="hibernate.dialect"
                 value="org.hibernate.dialect.MySQLDialect" />
-                <persistence:property name="show_sql" value="true" />
-        <persistence:property name="format_sql" value="true" />
+                <persistence:property name="show_sql" value="true" >true</persistence:property>
+        <persistence:property name="format_sql" value="true" >true</persistence:property>
                 
                 <persistence:property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 
