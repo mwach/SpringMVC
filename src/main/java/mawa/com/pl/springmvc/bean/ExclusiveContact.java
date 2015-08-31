@@ -3,18 +3,12 @@ package mawa.com.pl.springmvc.bean;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
 
 //TABLE per class hierarchy
 @Entity(name="contact")
@@ -37,10 +31,8 @@ public class ExclusiveContact extends Contact{
 	String goldenCardNo;
 
 	//SEPARATE TABLE JOIN
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinTable(name="contact_order", joinColumns = {@JoinColumn(name="C_ID")}, inverseJoinColumns = {@JoinColumn( name="O_ID")})
-
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="contractId")
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinTable(name="contact_order", joinColumns = {@JoinColumn(name="C_ID")}, inverseJoinColumns = {@JoinColumn( name="O_ID")})
 	Set<Order> orders = new HashSet<>();
 
 	public String getGoldenCardNo() {
