@@ -41,7 +41,6 @@ public class Contact {
 	@Size(min=3)
 	String name;
 
-	@NotNull
 	@Size(min=3)
 	String surname;
 

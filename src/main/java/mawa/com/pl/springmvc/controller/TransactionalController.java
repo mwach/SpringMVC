@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import mawa.com.pl.springmvc.bean.Contact;
 import mawa.com.pl.springmvc.service.TransactionalService;
+import mawa.com.pl.springmvc.service.exception.MyDaoException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,12 @@ public class TransactionalController {
 	public void handleNotFoundException(RuntimeException exc, WebRequest request, HttpServletResponse response) throws IOException {
 	    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Sorry dude, my server broke");
 
+	}
+
+	@ExceptionHandler(MyDaoException.class)
+	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
+	public void handleMyDaoException(MyDaoException exc, WebRequest request, HttpServletResponse response) throws IOException {
+	    response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Sorry dude, my server broke2");
 	}
 
 }
