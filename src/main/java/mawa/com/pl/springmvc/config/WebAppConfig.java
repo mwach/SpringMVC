@@ -11,15 +11,17 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestMvcConfiguratio
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Import(RepositoryRestMvcConfiguration.class)
 @Configuration
-@ComponentScan({"mawa.com.pl.springmvc.controller", "mawa.com.pl.springmvc.dao"})
+@ComponentScan({"mawa.com.pl.springmvc.controller", "mawa.com.pl.springmvc.dao", "mawa.com.pl.springmvc.service"})
 @EnableWebMvc
 @EnableJpaRepositories("mawa.com.pl.springmvc.dao")
+@EnableTransactionManagement
 public class WebAppConfig {
 
 	@Bean
