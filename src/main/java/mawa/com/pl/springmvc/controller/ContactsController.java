@@ -1,7 +1,15 @@
 package mawa.com.pl.springmvc.controller;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validator;
 
 import mawa.com.pl.springmvc.bean.Contact;
 import mawa.com.pl.springmvc.bean.ExclusiveContact;
@@ -12,13 +20,14 @@ import mawa.com.pl.springmvc.dao.ContactRepo;
 import mawa.com.pl.springmvc.dao.TeamRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.common.collect.Lists;
 
 @Controller
 public class ContactsController {
@@ -28,13 +37,21 @@ public class ContactsController {
 
 	@Autowired
 	TeamRepo teamRepository;
-	
+
+	@Autowired
+	Validator validator;
+
 	@RequestMapping("/uuid")
 	@ResponseBody
-	public Contact getUUID() {
+	public Contact getUUID(HttpServletResponse response) throws IOException {
 		Contact cnt = new Contact();
 		cnt.setName(UUID.randomUUID().toString());
-		repository.save(cnt);
+			Set<ConstraintViolation<Contact>> exc = validator.validate(cnt);
+			if(!exc.isEmpty()){
+				response.sendError(HttpStatus.BAD_REQUEST.value(), exc.toString());
+			}else{
+				repository.save(cnt);
+			}
 		return cnt;
 	}
 
@@ -66,7 +83,7 @@ public class ContactsController {
 		Player p2 = new Player();
 
 		teamRepository.save(team);
-		team.setPlayers(Lists.asList(p1, new Player[]{p2}));
+		team.setPlayers(Arrays.asList(new Player[]{p2}));
 
 		team.setName("t1");
 		p1.setNickName("p1");

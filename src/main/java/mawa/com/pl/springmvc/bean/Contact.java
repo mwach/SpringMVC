@@ -9,7 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 // TABLE per class hierarchy
@@ -33,9 +34,15 @@ public class Contact {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="C_ID")
+	@NotNull
 	int id;
 	
+	@NotNull
+	@Size(min=3)
 	String name;
+
+	@NotNull
+	@Size(min=3)
 	String surname;
 
 	public int getId() {
